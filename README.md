@@ -2,6 +2,8 @@
 ![Kaywa](Kaywa-main.png)
 
 
+![Kaywa-mob](Kaywa-mob2.png)
+
 ---
 
 ## 🧩 Vision
