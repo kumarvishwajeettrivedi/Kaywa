@@ -1,5 +1,5 @@
 
-![Kaywa](kaywa-main.png)
+![Kaywa](Kaywa-main.png)
 
 
 ---
