@@ -1,0 +1,214 @@
+.footer {
+    background: linear-gradient(135deg, #152c29 0%, #1a3a35 100%);
+    color: #bbc5c3;
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    font-family: "Sen", sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Subtle background pattern */
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(187, 197, 195, 0.2) 50%, transparent 100%);
+  }
+  
+  /* Top section layout */
+  .topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+width: 100%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(187, 197, 195, 0.1);
+  }
+  
+  /* Left-aligned link list */
+  .linksList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .linkItem {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    color: #bbc5c3;
+    cursor: pointer;
+    font-weight: 300;
+    padding: 0.5rem 0;
+    padding-left: 10%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    text-align: left;
+    width: 100%;
+    
+  }
+  .linkItem a {
+    text-decoration: none;
+   color: #bbc5c3;
+  }
+  
+  .linkItem::before {
+    content: '';
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: #4ecdc4;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .linkItem:hover {
+    color: #ffffff;
+    transform: translateX(8px);
+    padding-left: 12%;
+  }
+  
+  .linkItem:hover::before {
+    opacity: 1;
+    left: 6%;
+  }
+  
+  /* Social icons container - properly centered */
+  .socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .icon {
+    background: linear-gradient(135deg, #9f9f9f 0%, #d3d2d2 100%);
+    color: #152c29;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .icon:hover {
+    background: linear-gradient(135deg, #e3e2e2 0%, #aeadad 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    color: #1a3a35;
+  }
+  
+  /* Middle and bottom texts */
+  .middleText {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    color: #8fa19e;
+    letter-spacing: 0.3px;
+  }
+  
+  .middleText span {
+    margin: 0 8px;
+    color: #4ecdc4;
+    font-weight: 400;
+  }
+  
+  .bottomText {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    color: #8fa19e;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 2rem 1rem 1.5rem;
+    }
+    
+    .topSection {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    .linksList {
+      align-items: center;
+      width: 100%;
+    }
+    
+    .linkItem {
+      padding-left: 0;
+      text-align: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    
+    .linkItem::before {
+      display: none;
+    }
+    
+    .linkItem:hover {
+      transform: translateY(-2px);
+      padding-left: 0;
+    }
+    
+    .socials {
+      order: -2; /* Move social icons above links on mobile */
+    }
+    
+    .middleText,
+    .bottomText {
+      font-size: 0.7rem;
+    }
+    
+    .middleText span {
+      display: inline-flex;
+      margin: 0.25rem 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .socials {
+      gap: 0.8rem;
+    }
+    
+    .icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .linkItem {
+      font-size: 0.95rem;
+    }
+  }

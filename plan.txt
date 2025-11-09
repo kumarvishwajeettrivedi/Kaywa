@@ -1,0 +1,38 @@
+client : 
+    -- acting as the offer creator
+    gathers ice candidates
+    opens peerconnection
+    sends the offer to server (to server)
+    recieves answer (from server)
+    finanly connects     
+    send ice candidates to the answerer (to server)
+    recieve the ice candidates (from server)
+
+    -- acting as the answerer
+    recievs an offer (from server)
+    creates answer
+    send answer to server(to server)
+    get connected by the offer createor
+    send ice candidates to the answerer (to server)
+    recieve the ice candidates (from server)
+
+
+
+
+
+server(1) : signalling server
+    recieving the offers from the user : recieve the offer from people : save it like  {userid  :{sdp : {... sdp offer}, extra details field}}
+    sending the offer to other users
+    recieving the ansers {userid : {answer_sdp :{} , answer_to : "userid of offer it is meant for"}}
+    sending a particular answer to the offer it was ment to be for : send the answer to the offer candidate :
+    forwarding the ice candidates untill connection is eshatablished
+
+    // other functions
+    -- socket based for monitoring 
+    -- for disconnecting
+
+server(2) : STUN/TURN (Phase 2)
+    --JUST DEPLOY THE COTURN AND ADD THE URLS IN THE CLIENT CODE
+    
+SERVER(3) multiparty SFU (PHASE 3)
+    -- JUST SEND OFFERS AND ANSSWERS TO IT INSTED OF PEERS

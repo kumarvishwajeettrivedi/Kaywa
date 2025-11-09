@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&family=Noto+Sans:wght@300;400;600;700&family=Roboto+Mono:wght@300;400;700&display=swap');
+
+/* ========================= */
+/* BASE STRUCTURE & GLOBAL   */
+/* ========================= */
+
+.container {
+  min-height: 100vh;
+  background-color: #0d3d3d;
+  color: #FFE2CE;
+  padding-top: 8%;
+  padding-bottom: 10%;
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+/* ========================= */
+/* HERO SECTION              */
+/* ========================= */
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1300px;
+  margin: 0 auto 80px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.heroContent {
+  flex: 1;
+}
+
+.heroText {
+  font-size: clamp(1.2rem, 1vw + 1rem, 1.8rem);
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.heroCircle {
+  width: clamp(220px, 25vw, 300px);
+  height: clamp(220px, 25vw, 300px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+
+.globeImage {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.circleText {
+  width: 100%;
+  height: 100%;
+  animation: rotate 10s linear infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.curvedText {
+  fill: #FFE2CE;
+  font-size: clamp(0.75rem, 0.7vw, 0.9rem);
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  font-family: 'Roboto Mono', monospace;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ========================= */
+/* BRAND MARQUEE SECTION     */
+/* ========================= */
+
+.brandSection {
+  max-width: 100%;
+  margin: 0 auto 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.brandNames {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 300;
+  white-space: nowrap;
+  animation: marquee 12s linear infinite;
+  padding-right: 20px;
+}
+
+.brandSection::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, #0d3d3d 0%, transparent 10%, transparent 90%, #0d3d3d 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========================= */
+/* FEATURES GRID SECTION     */
+/* ========================= */
+
+.featuresSection {
+  max-width: 100%;
+  margin: 0 auto 100px;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 3vw, 50px);
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.featureIcon {
+  width: clamp(140px, 14vw, 180px);
+  height: clamp(140px, 14vw, 180px);
+  background-color: rgba(139, 99, 108, 0.8);
+  border-radius: 20px;
+  box-shadow: 4px 4px 0px #FFE2CE;
+}
+
+.featureText {
+  font-size: clamp(1rem, 1vw + 0.6rem, 1.25rem);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* ========================= */
+/* FAQ SECTION               */
+/* ========================= */
+
+.faqSection {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.faqItem {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0 1rem;
+  transition: all 0.3s ease;
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8px;
+  background: transparent;
+  border: none;
+  color: #FFE2CE;
+  font-size: clamp(1rem, 1vw + 0.6rem, 1.2rem);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.faqIcon {
+  font-size: clamp(1.5rem, 1.5vw, 2rem);
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.faqIconOpen { transform: rotate(45deg); }
+
+.faqAnswer {
+  padding: 0 8px 16px;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/* RESPONSIVE REFINEMENTS    */
+/* ========================= */
+
+/* Tablets (768px–1024px) */
+@media (max-width: 1024px) {
+  .container { padding-top: 10%; }
+  .hero { gap: 40px; }
+  .brandNames { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+}
+
+/* Small Tablets & Landscape Phones */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  margin: 0 auto;
+    text-align: center;
+    gap: 40px;
+  }
+  .heroCircle { margin-top: 20px; }
+  .featuresGrid { gap: 30px; }
+}
+
+/* Mobiles (< 768px) */
+@media (max-width: 768px) {
+  .container { padding-top: 16%; }
+  .brandNames { font-size: 2rem; gap: 12px; }
+  .sectionTitle { font-size: 2rem; }
+  .faqSection { max-width: 85%; }
+}

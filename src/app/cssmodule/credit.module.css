@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600;700&display=swap');
+
+/* Overlay and Card Styles */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 52, 47, 0.85);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  animation: fadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card {
+  background: #fbe7d3;
+  border-radius: 20px;
+  padding: 1.6rem 1.4rem 1.2rem;
+  width: 90%;
+  max-width: 380px;
+  max-height: 75vh;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(8, 55, 48, 0.25);
+  animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Sen", sans-serif;
+  position: relative;
+  border: 1.5px solid rgba(201, 168, 139, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.card::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #173732;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: #fbe7d3;
+}
+
+.closeButton svg {
+  stroke-width: 2.5;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+.iconWrapper {
+  background: linear-gradient(135deg, #173732 0%, #0f2522 100%);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.coinIcon {
+  color: #fbe7d3;
+}
+
+.title {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #173732;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.creditBalance {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-radius: 16px;
+  border: 1.5px solid rgba(23, 55, 50, 0.1);
+}
+
+.creditAmount {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: #173732;
+  line-height: 1;
+}
+
+.creditLabel {
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #3e2929;
+  opacity: 0.9;
+}
+
+.subtitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #3e2929;
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 280px;
+}
+
+/* Section Styles */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.sectionTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #173732;
+  margin: 0;
+}
+
+/* Packages Section */
+.packagesSection {
+  padding: 0 0.25rem;
+}
+
+.packagesGrid {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.packageCard {
+  background: linear-gradient(135deg, #173732 0%, #0f2522 100%);
+  color: #fbe7d3;
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  border: 1.5px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: rotate(0deg);
+}
+
+.packageCard:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+
+.packageCard:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+
+.packageCard:hover {
+  transform: rotate(0deg) translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(23, 55, 50, 0.4);
+  border-color: rgba(85, 162, 157, 0.6);
+}
+
+.packageCard.popular {
+  border-color: #55a29d;
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 0 0 2px rgba(85, 162, 157, 0.3);
+}
+
+.packageCard.popular:hover {
+  transform: rotate(0deg) translateY(-3px) scale(1.04);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #55a29d 0%, #3d8c87 100%);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 12px;
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.packageContent {
+  text-align: left;
+  flex: 1;
+}
+
+.packageCredits {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.packageCoin {
+  color: #fbe7d3;
+}
+
+.packagePrice {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.rupeeSymbol {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.packageDuration {
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  opacity: 0.9;
+  color: #c9a88b;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.packageValue {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.addButton {
+  background: rgba(251, 231, 211, 0.15);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1.5px solid rgba(251, 231, 211, 0.3);
+}
+
+.packageCard:hover .addButton {
+  background: rgba(251, 231, 211, 0.25);
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* Features Section */
+.featuresSection {
+  padding: 0 0.25rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.featureItem {
+  background: rgba(23, 55, 50, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(23, 55, 50, 0.08);
+}
+
+.featureItem:hover {
+  background: rgba(23, 55, 50, 0.08);
+  transform: translateY(-1px);
+}
+
+.featureIcon {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.featureText {
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #173732;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Loading Overlay */
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(251, 231, 211, 0.95);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 2.5px solid rgba(23, 55, 50, 0.2);
+  border-top: 2.5px solid #173732;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingOverlay p {
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  color: #173732;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: scale(0.96) translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Mobile Responsive */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.45rem 1.25rem 1.25rem;
+    gap: 1.1rem;
+    max-height: 60vh;
+  }
+  
+  .closeButton {
+    top: 0.875rem;
+    right: 0.875rem;
+    width: 55px;
+    height: 55px;
+  }
+  
+  .title {
+    font-size: 1.35rem;
+  }
+  
+  .creditBalance {
+    padding: 0.6rem 1rem;
+  }
+  
+  .creditAmount {
+    font-size: 2rem;
+  }
+  
+  .packagesGrid {
+    gap: 0.6rem;
+  }
+  
+  .packageCard {
+    padding: 1rem 0.875rem;
+  }
+  
+  .packageCredits {
+    font-size: 1.15rem;
+  }
+  
+  .featuresGrid {
+    gap: 0.5rem;
+  }
+  
+  .featureItem {
+    padding: 0.6rem 0.4rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 1.5rem 1rem 1rem;
+    gap: 1.25rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+  }
+  
+  .packageCard {
+    padding: 0.875rem 0.75rem;
+  }
+}

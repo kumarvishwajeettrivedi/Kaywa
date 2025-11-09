@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600;700&display=swap');
+
+/* Overlay and Card Styles */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 52, 47, 0.8);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.card {
+  background: #fbe7d3;
+  border-radius: 24px;
+  padding: 1.5rem 1rem 1rem;
+  width: 90%;
+  max-width: 480px;
+  max-height: 80vh;
+  text-align: center;
+  box-shadow: 0 25px 70px rgba(8, 55, 48, 0.3);
+  animation: fadeIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: "Sen", sans-serif;
+  position: relative;
+  border: 2px solid rgba(201, 168, 139, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryCount {
+  margin-left: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #080e0d;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 2px 8px;
+  display: inline-block;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #173732;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.closeButton svg {
+  stroke-width: 3;
+}
+
+/* Tags Header */
+.tagsHeader {
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.tagsTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: #173732;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.tagsSubtitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #3e2929;
+  opacity: 0.8;
+}
+
+/* Tags Content */
+.tagsContent {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Category Section */
+.categorySection {
+  margin-bottom: 1.5rem;
+}
+
+.categoryTitle {
+  font-family: "Sen", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #0f2522;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* Tags Grid */
+.tagsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+/* Tag Chip */
+.tagChip {
+  background: linear-gradient(135deg, #173732 0%, #0f2522 100%);
+  color: #fbe7d3;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-family: "Sen", sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.tagChip:hover {
+  background: linear-gradient(135deg, #1a423d 0%, #122e29 100%);
+  box-shadow: 0 4px 12px rgba(23, 55, 50, 0.4);
+}
+
+.tagChip:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Selected Tag Chip */
+.tagChipSelected {
+  background: linear-gradient(135deg, #55a29d 0%, #3d8c87 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(85, 162, 157, 0.4);
+}
+
+.tagChipSelected:hover {
+  background: linear-gradient(135deg, #4a9c94 0%, #357d77 100%);
+  box-shadow: 0 4px 12px rgba(85, 162, 157, 0.6);
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.tagChip:active {
+  transform: scale(0.98);
+}
+
+/* Hide scrollbar */
+.tagsContent::-webkit-scrollbar {
+  display: none;
+}
+
+.tagsContent {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.92) translateY(25px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+/* Enhanced Mobile Responsive */
+@media (max-width: 480px) {
+  .card {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    display: none;
+  }
+}

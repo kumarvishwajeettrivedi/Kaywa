@@ -1,0 +1,471 @@
+/* Video Area */
+.videoArea {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 1.5rem;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop Layout */
+.desktopLayout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  min-height: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Full screen states */
+.desktopLayout.fullScreenStranger {
+  gap: 0;
+}
+
+.desktopLayout.fullScreenStranger .videoPanel:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.desktopLayout.fullScreenStranger .videoPanel:last-child {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 20;
+  border-radius: 12px;
+}
+
+.mobileLayout {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Mobile full screen states */
+.mobileLayout.fullScreenStranger .mobileTop {
+  flex: 1;
+  min-height: 0;
+}
+
+.mobileLayout.fullScreenStranger .mobileBottom {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 200px;
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  z-index: 20;
+  border-radius: 12px;
+}
+
+/* Video Panels */
+.videoPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.videoContainer {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Collapsed video container styles */
+.videoContainer.collapsed {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.videoContainer.collapsed .videoContent {
+  padding: 0.5rem;
+}
+
+.videoContainer.collapsed .avatar {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.videoContainer.collapsed .participantName,
+.videoContainer.collapsed .status {
+  display: none;
+}
+
+.videoContainer.collapsed .youBadge {
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+}
+
+.videoContainer.collapsed .videoControls {
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.videoContainer.collapsed .connectionStatus {
+  display: none;
+}
+
+.videoWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.videoContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Video Placeholder */
+.videoPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.participantName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+.status {
+  font-size: 0.8rem;
+  color: #00d4aa;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  background: rgba(0, 212, 170, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* You Badge */
+.youBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 5;
+}
+
+/* Video Controls */
+.videoControls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.controlButton {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.controlButton:active {
+  transform: scale(0.95);
+}
+
+.connectionStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0.875rem;
+  border-radius: 18px;
+  font-size: 0.75rem;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.connectionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d4aa;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Participants Grid */
+.participantsGrid {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gridHeader {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.gridParticipant {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gridParticipant:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.gridVideo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.gridVideo .avatar {
+  width: 50px;
+  height: 50px;
+  font-size: 1.1rem;
+}
+
+.gridName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Mobile Layout */
+.mobileTop,
+.mobileBottom {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobileTop {
+  padding-bottom: 0.5rem;
+}
+
+.mobileBottom {
+  padding-top: 0.5rem;
+}
+
+.mobileLayout .videoContainer {
+  border-radius: 14px;
+}
+
+.mobileLayout .avatar {
+  width: 70px;
+  height: 70px;
+  font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .desktopLayout {
+    display: none;
+  }
+  
+  .mobileLayout {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .videoArea {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .participantsGrid {
+    padding: 1rem;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .gridParticipant {
+    padding: 1rem;
+  }
+  
+  .videoControls {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  
+  .controlButton {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .youBadge {
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+  
+  .participantName {
+    font-size: 1rem;
+  }
+
+  /* Mobile collapsed dimensions */
+  .mobileLayout.fullScreenStranger .mobileBottom {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoArea {
+    padding: 0.5rem;
+    gap: 0.75rem;
+  }
+  
+  .avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  
+  .gridVideo .avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust collapsed position for very small screens */
+  .mobileLayout.fullScreenStranger .mobileBottom {
+    width: 120px;
+    height: 200px;
+    bottom: 4.5rem;
+    right: 0.5rem;
+  }
+
+  .desktopLayout.fullScreenStranger .videoPanel:last-child {
+    width: 280px;
+    height: 180px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.videoContainer {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@media (max-width: 300px){
+  body{
+    display: none;
+  }
+}

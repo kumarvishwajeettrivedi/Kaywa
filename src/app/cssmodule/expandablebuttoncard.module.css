@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600;700&display=swap');
+
+/* ========================= */
+/*  MOBILE FIRST BASE STYLES */
+/* ========================= */
+
+body {
+  font-family: "Sen", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 180px;
+  position: relative;
+}
+
+/* ========================= */
+/*  BUTTON DESIGN - COMPACT */
+/* ========================= */
+
+.customButton {
+  background-color: #FFE2CE;
+  color: #083730;
+  font-weight: 600;
+  overflow: visible;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 1px 2px 0 #a89386;
+  padding: 0;
+  width: 100%;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  z-index: 1;
+}
+
+/* ===== EXPANDED STATE ===== */
+.customButton.expanded {
+  z-index: 1000;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(8, 55, 48, 0.18),
+              0 4px 12px rgba(8, 55, 48, 0.12),
+              0 0 0 1px rgba(8, 55, 48, 0.08);
+  border: 1px solid rgba(8, 55, 48, 0.15);
+  transform: translateY(-2px) scale(1.01);
+  background: linear-gradient(135deg, #FFE2CE 0%, #ffeee3 100%);
+  
+  /* 👇 Rounded top, flat bottom to merge with dropdown */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.buttonHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  gap: 6px;
+  min-height: 40px;
+}
+
+/* Divider when expanded */
+.customButton.expanded .buttonHeader {
+  border-bottom: 1px solid rgba(168, 147, 134, 0.3);
+  background: linear-gradient(to bottom, #FFE2CE, #f8d9c2);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.text {
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+}
+
+/* Selection Count Badge */
+.selectionBadge {
+  background: #083730;
+  color: #FFE2CE;
+  font-size: clamp(0.55rem, 1.6vw, 0.65rem);
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  flex-shrink: 0;
+}
+
+.customButton:not(.expanded) .selectionBadge {
+  animation: pulse 2s infinite;
+}
+
+.plus {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.customButton.expanded .plus {
+  transform: rotate(45deg);
+}
+
+/* ========================= */
+/*  DROPDOWN STYLING - MERGED */
+/* ========================= */
+
+.dropdown {
+  background: #FFE2CE;
+  padding: 6px 0 4px 0;
+  animation: slideDown 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1001;
+  
+  /* 👇 Flat top, rounded bottom for visual merge */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  
+  max-height: min(40vh, 300px);
+  overflow-y: auto;
+  box-shadow: inset 0 1px 0 rgba(8, 55, 48, 0.1);
+  border: 1px solid rgba(8, 55, 48, 0.1);
+  border-top: none; /* merge with expanded button */
+  margin-top: -1px; /* perfect edge alignment */
+}
+
+/* Scrollbar styling */
+.dropdown::-webkit-scrollbar {
+  width: 2px;
+}
+.dropdown::-webkit-scrollbar-track {
+  background: rgba(8, 55, 48, 0.08);
+  border-radius: 1px;
+  margin: 1px;
+}
+.dropdown::-webkit-scrollbar-thumb {
+  background: rgba(8, 55, 48, 0.2);
+  border-radius: 1px;
+}
+.dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(8, 55, 48, 0.4);
+}
+
+/* Dropdown item */
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 8px;
+  margin: 1px 4px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  min-height: 32px;
+}
+
+.dropdownItem:hover {
+  background-color: rgba(8, 55, 48, 0.08);
+  transform: translateX(2px);
+  box-shadow: 0 1px 2px rgba(8, 55, 48, 0.1);
+}
+
+.dropdownItem.selected {
+  background-color: rgba(8, 55, 48, 0.12);
+  border-left: 2px solid #083730;
+}
+
+.dropdownItem.selected:hover {
+  background-color: rgba(8, 55, 48, 0.15);
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #083730;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: bold;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dropdownItem.selected .checkbox {
+  background-color: #083730;
+  color: #FFE2CE;
+  transform: scale(1.05);
+  box-shadow: 0 1px 2px rgba(8, 55, 48, 0.3);
+}
+
+.itemText {
+  font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  flex: 1;
+  line-height: 1.1;
+}
+
+.dropdownItem.selected .itemText {
+  font-weight: 700;
+  color: #062822;
+}
+
+/* Progress indicator at bottom */
+.dropdownProgress {
+  padding: 6px 10px;
+  border-top: 1px solid rgba(168, 147, 134, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+.progressText {
+  font-size: clamp(0.6rem, 1.4vw, 0.7rem);
+  font-weight: 600;
+  color: #083730;
+  opacity: 0.8;
+  line-height: 1.1;
+}
+
+/* ========================= */
+/*  RESPONSIVE BREAKPOINTS */
+/* ========================= */
+
+/* Small Phones */
+@media (max-width: 374px) {
+  .buttonsWrapper { padding: 0.4rem; }
+  .buttonsContainer { gap: 0.6rem; max-width: 180px; }
+  .buttonHeader { padding: 5px 8px; min-height: 35px; }
+  .dropdownItem { padding: 5px 8px; margin: 1px 3px; min-height: 30px; }
+  .text { font-size: 0.8rem; }
+  .itemText { font-size: 0.7rem; }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+  .buttonsWrapper { padding: 1rem; }
+  .buttonsContainer { gap: 1rem; max-width: 260px; }
+  .customButton { border-radius: 10px; }
+  .customButton.expanded {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .dropdown {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .buttonsWrapper { padding: 1.5rem; }
+  .buttonsContainer { gap: 1.25rem; max-width: 280px; }
+  .customButton:hover:not(.expanded) {
+    background-color: #f8d9c2;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 2px 4px 0 #705c4f;
+    transform: translateY(-1px);
+    border-color: rgba(8, 55, 48, 0.1);
+  }
+  .dropdownItem:hover { transform: translateX(4px); }
+}
+
+/* ========================= */
+/*  ANIMATIONS & ACCESSIBILITY */
+/* ========================= */
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); max-height: 0; }
+  to { opacity: 1; transform: translateY(0); max-height: min(45vh, 300px); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+@keyframes checkmark {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.dropdownItem.selected .checkbox { animation: checkmark 0.2s ease; }
+.selectionBadge.updated { animation: bounce 0.4s ease; }
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* Focus */
+.customButton:focus-visible {
+  outline: 2px solid #083730;
+  outline-offset: 1px;
+}
+.dropdownItem:focus-visible {
+  outline: 1px solid #083730;
+  outline-offset: -1px;
+}

@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;600;700&display=swap');
+
+/* --- Global Reset and Base Styles --- */
+
+body {
+    font-family: "Sen", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    color: #ffffff; 
+    min-height: 100vh;
+    width: 100%;
+    height: 100dvh; 
+    background: linear-gradient(to top, #073830 0%, #08342F 100%);
+    overflow-x: hidden;
+}
+
+/* --- Text Content and Layout (Proper Centering) --- */
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Content at top */
+    text-align: center;
+    padding: 1rem 1.5rem; 
+    padding-top: 10vh; /* ← Add top spacing here */
+    min-height: 100dvh; 
+    max-width: 1000px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.textContainer p:first-child {
+    font-size: clamp(1.2rem, 3vw + 1rem, 2.5rem); 
+    font-weight: 600; 
+    margin: 0 0 0.2rem 0; 
+    color: #ffffff;
+    letter-spacing: 1px; 
+    line-height: 1.1; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.textContainer p:last-child {
+    font-size: clamp(0.8rem, 2vw + 0.5rem, 1.2rem); 
+    font-weight: 400;
+   
+    color: #c9e0df; 
+    letter-spacing: 0.6px; 
+    line-height: 1.5; 
+    max-width: 500px; 
+    padding-bottom: 1.5rem;
+}
+
+/* --- Button Container --- */
+
+.mainbutton {
+    margin: 2rem auto; /* Fixed from 50% to proper spacing */
+    display: flex;
+    justify-content: center;
+ 
+}
+
+/* --- Decorative Corner Strips --- */
+
+.cornerStrip {
+    position: absolute;
+    top: 0;
+    width: 30vw; 
+    height: 100dvh; 
+    overflow: hidden;
+    z-index: -1;
+    transition: width 0.3s ease-in-out; 
+}
+
+.cornerStrip:first-child {
+    left: 0;
+}
+
+.cornerStrip:last-child {
+    right: 0;
+    left: auto;
+    transform: scaleX(-1);
+}
+
+.stripImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; 
+    height: 200%;
+    background:
+      linear-gradient(45deg, #0735354d 0%, rgba(5, 55, 55, 0.4) 100%),
+      url("/bg/cornor-image.png") repeat-y center top;
+    background-size: auto 60%;
+    transform: rotate(-25deg) translate(-30%, -10%); 
+    animation: moveStrip 15s linear infinite; 
+    opacity: 0.8; 
+    clip-path: polygon(0 0, 45% 0, 100% 100%, 0% 100%);
+}
+
+.cornerStrip:last-child .stripImage {
+    clip-path: polygon(0 0, 45% 0, 100% 100%, 0% 100%);
+}
+
+@keyframes moveStrip {
+    from {
+      background-position: 0px 0px;
+    }
+    to {
+      background-position: 0px -2000px;
+    }
+}
+
+/* --- Mobile First Responsive Adjustments --- */
+
+/* Default mobile styles are already above */
+
+@media (max-width: 767px) {
+    .textContainer {
+        padding: 1rem; /* Slightly less padding on very small screens */
+        justify-content: flex-start; /* Start from top on mobile */
+        padding-top: 10vh; /* Add some top padding for mobile */
+    }
+    
+    .mainbutton {
+        margin: 1.5rem auto; /* Smaller margin on mobile */
+    }
+    
+    .cornerStrip {
+        width: 35vw; /* Wider on mobile for better coverage */
+    }
+}
+
+@media (min-width: 768px) {
+    .cornerStrip {
+        width: 20vw; 
+    }
+    .textContainer {
+        padding: 1rem; /* Slightly less padding on very small screens */
+        justify-content: flex-start; /* Start from top on mobile */
+        padding-top: 10vh; /* Add some top padding for mobile */
+    }
+ 
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .textContainer {
+        padding: 1rem; /* Slightly less padding on very small screens */
+        justify-content: flex-start; /* Start from top on mobile */
+        padding-top: 5vh; /* Add some top padding for mobile */
+    }
+}
+@media (min-width: 1024px) {
+    .cornerStrip {
+        width: 25vw; 
+    }
+}
+
+@media (min-width: 2048px) {
+    .cornerStrip {
+        width: 40vw; 
+    }
+}
+
+/* dVH Fallback */
+@supports not (height: 100dvh) {
+    body, .textContainer {
+        height: 100vh;
+        min-height: 100vh;
+    }
+}
