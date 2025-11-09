@@ -41,7 +41,13 @@ export default function RootLayout({
             <Footer />
           </>
         ) : (
-          <ChattingNow />
+          <ChattingNow participants={[]} mainVideoId={""} minimizedVideos={[]} onMinimizeVideo={function (videoId: string): void {
+              throw new Error("Function not implemented.");
+            } } onMaximizeVideo={function (videoId: string): void {
+              throw new Error("Function not implemented.");
+            } } onThumbnailClick={function (videoId: string): void {
+              throw new Error("Function not implemented.");
+            } } />
         )}
       </body>
     </html>
