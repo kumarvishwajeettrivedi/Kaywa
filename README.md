@@ -2,7 +2,7 @@
 ![Kaywa](Kaywa-main.png)
 
 
-![Kaywa-mob](Kaywa-mob2.png)
+![Kaywa-mob](kaywa-mob2.png)
 
 ---
 
