@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../cssmodule/pagenotfound.module.css";
+import Link from "next/link";
 
 const PageNotFound: React.FC = () => {
   return (
@@ -21,9 +22,9 @@ const PageNotFound: React.FC = () => {
         The page you’re looking for might have been removed or is temporarily unavailable.
       </p>
 
-      <a href="/" className={styles.homeButton}>
+      <Link href="/" className={styles.homeButton}>
         Go Back
-      </a>
+      </Link>
     </div>
   );
 };
