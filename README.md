@@ -1,5 +1,6 @@
 
-*(Replace paths above with your image files once ready.)*
+![Kaywa Logo](./kaywa-main.png)
+
 
 ---
 
