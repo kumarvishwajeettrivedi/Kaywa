@@ -1,5 +1,5 @@
 
-![Kaywa Logo](kaywa-main.png)
+![Kaywa](kaywa-main.png)
 
 
 ---
